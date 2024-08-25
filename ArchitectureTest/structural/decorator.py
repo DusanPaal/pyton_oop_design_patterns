@@ -1,34 +1,56 @@
-# Description:
-# ------------
-# The decorator pattern is a structural pattern, that allows
-# to attach additional responsibilities to an object at runtime.
-#
-# Useful when:
-# ------------
-# - the functionality of a object needs to be extended dynamically
-#   with new responsibilities without altering the class
-# - the new responsibility must be later removed from the decorated
-#   object when it's no longer needed.
-#
-# Key features:
-# ------------
-# - can be used in both the Object Oriented and Functional paradigms.
-# - is different than the Python language feature of Python Decorators in its
-#   syntax and complete purpose. It is a similar concept in the way that it is
-#   a wrapper, but it also can be applied at runtime dynamically.
-# - adds extensibility without modifying the original object by forwarding
-#   requests to the enclosed object and can perform extra actions.
-# - decorators can be nested recursively.
-# - It is an alternative method to creating multiple combinations of subclasses,
-#   e.g. instead of creating a subclass with all combinations of objects A, B, C
-#   in any order, and including/excluding objects, 3 objects can be created that
-#   can decorate each other in any order, e.g., (D(A(C))) or (B(C)) or (A(B(A(C))).
-# - The decorator, compared to using static inheritance to extend, is more flexible
-#   since it can be easily add/remove the decorators at runtime. E.g., use in a
-#   recursive function
-# - supports recursive composition. E.g., halve(halve(number))
-# - A decorator shouldn't modify the internal objects data or references.
-#   This allows the original object to stay intact if the decorator is later removed
+"""
+Description:
+------------
+The Decorator Pattern is a structural design pattern that enables adding
+new functionalities to an object dynamically at runtime. This pattern is
+especially useful when you need to extend an object's behavior without
+altering its original structure or class.
+
+Key features:
+------------
+Applicability in Both Paradigms:
+    The Decorator Pattern can be used in both Object-Oriented Programming
+    and Functional Programming.
+
+Different from Python Language Decorators:
+    While the concept of "wrapping" is shared, the structural pattern is
+    distinct from Python's syntactic decorators, as it allows runtime manipulation.
+
+Extensibility Without Modification:
+    Decorators forward requests to the original object and can perform
+    additional actions, providing extensibility without altering the original object.
+
+Nesting and Recursion:
+    Decorators can be nested recursively, enabling complex behavior combinations
+    without subclassing.
+
+Flexibility Over Inheritance:
+    Compared to static inheritance, decorators offer more flexibility by allowing
+    you to dynamically add or remove behaviors at runtime.
+
+Supports Recursive Composition:
+    The pattern can be used recursively, applying the same decorator multiple
+    times in a chain (e.g., halve(halve(number))).
+
+Non-Invasive:
+    A well-implemented decorator does not modify the internal state or references
+    of the original object, ensuring the base object remains unchanged if the decorator
+    is removed.
+
+Usage:
+------
+Dynamic Functionality Extension:
+    You want to extend an object's functionality at runtime without modifying
+    its class.
+
+Reversible Changes:
+    You need the ability to remove or alter the added functionality later on,
+    reverting to the object's original state.
+
+Avoiding Subclass Explosion:
+    Instead of creating multiple subclasses to cover all possible combinations
+    of functionalities, decorators allow you to mix and match behaviors dynamically.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner

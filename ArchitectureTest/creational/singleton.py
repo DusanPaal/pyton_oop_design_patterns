@@ -1,33 +1,50 @@
-# Description:
-# ------------
-# The Singleton can be accessible globally, but it is not a global variable. It is a class that can be
-# instanced at any time, but after it is first instanced, any new instances will point to the same instance
-# as the first.
-# For a class to behave as a Singleton, it should not contain any references to self but use static
-# variables, static methods and/or class methods
-# in order to work, the class level variables must be used as well as static or class mehtods
-# - cls is a reference to the class
-# - self is a reference to the instance of the class
-# _new_ gets called before _init_, and has access to class level variables
-#_init_ references self that is created when the class is instantiated ätherefore, must be avoided in a Singleton)
-# By using _new_, and returning a reference to cls, we can force the class to act as a singleton
+"""
+Description:
+------------
+The Singleton Pattern ensures that a class has only one instance
+and provides a global point of access to that instance. It is designed
+to control the instantiation of a class so that only one instance
+exists throughout the application.
 
+Key features:
+-------------
+Global Access Without Global Variables:
+    Unlike global variables, a Singleton is accessed through its class
+    methods or properties, providing a controlled global access point.
 
-# To be a Singleton, there must only be one copy of the Singleton, no matter how many times, or
-# in which class it was instantiated.
-# You want the attributes or methods to be globally accessible across your application, so that
-# other classes may be able to use the Singleton.
-# You can use Singletons in other classes, as I did with the leaderboard, and they will all use the
-# same Singleton regardless.
-# You want controlled access to a sole instance.
-# For a class to act as a singleton, it should not contain any references to self .
-# Useful when:
-# ------------
-# - onl one instance of a class is needed in the program
-# - the instance of a class should be easily accessible and extensible
-#
-# Key features:
-# ------------
+Static Methods and Variables:
+    The Singleton Pattern uses static variables and methods to store
+    and manage the single instance. This ensures that no matter how
+    many times the Singleton class is accessed or instantiated, only
+    one instance exists.
+
+Instance Creation Control:
+    The Singleton Pattern typically overrides the __new__ method (in Python)
+    or similar methods in other languages to ensure that only one instance is
+    created. The __init__() method is not used for this purpose, as __new__()
+    is responsible for creating the instance.
+
+No Self References:
+    In the Singleton Pattern, instance methods (which use self) are generally
+    avoided for managing the singleton instance. Instead, static methods or
+    class methods (using cls in Python) are used.
+
+Usage:
+------
+Single Instance Requirement:
+    When you need only one instance of a class to coordinate actions
+    across the system. For example, a configuration manager or a logging
+    service might benefit from being a Singleton.
+
+Global Access:
+    When you want to provide a single, globally accessible instance
+    that can be used throughout your application.
+
+Controlled Access:
+    When you need to control access to a sole instance,
+    ensuring that all parts of your application use the same object.
+"""
+
 import copy
 from unittest import TestCase, TextTestRunner
 

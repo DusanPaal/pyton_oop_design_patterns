@@ -1,25 +1,45 @@
 """
 Description:
 ------------
-The Builder Pattern is a creational pattern whose intent is to separate
-the construction of a complex object from its representation so that the
-same construction process can be used to create different representations.
-
-Useful when:
-------------
+The Builder Pattern is a creational design pattern that aims
+to separate the construction of a complex object from its
+representation. This separation allows the same construction
+process to create different representations of the object,
+making it versatile and adaptable to different needs.
 
 Key features:
-------------
-- the Builder pattern is a creational pattern that is used
-to create more complex objects created by a factory.
-- The Builder pattern should be able to construct complex objects in
-any order and include/exclude whichever available components it likes.
-- for different combinations of products than can be returned from
-a Builder, use a specific Director to create the bespoke combination.
+-------------
+Creational Pattern for Complex Objects:
+    Unlike simpler creational patterns like the Factory Pattern,
+    the Builder Pattern is specifically designed to handle the
+    creation of more complex objects.
+
+Flexible Construction:
+    The Builder Pattern allows constructing complex objects in
+    any order, including or excluding components as needed.
+    This flexibility is crucial when dealing with objects that
+    can be composed of many different parts.
+
+Use of a Director:
+    To handle different combinations of products or components,
+    a specific Director can be used to create bespoke (custom).
+    combinations. The Director controls the construction process,
+    ensuring that the appropriate steps are followed.
+
+Usage:
+------
+Complex Object Construction:
+    When an object is too complex to be created with
+    a single step and requires a step-by-step process.
+
+Multiple Representations:
+    When you need to create different representations
+    of the same type of object using the same construction process.
+
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner, TestSuite
-"""
 
 # ==========================================
 #               product classes

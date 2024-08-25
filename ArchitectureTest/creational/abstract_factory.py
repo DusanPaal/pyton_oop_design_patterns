@@ -1,29 +1,45 @@
-# Description:
-# ------------
-# The module provides an implementation of the "abstract factory pattern"
-# using the "factory pattern" to create a family of related or dependent
-# objects. The Abstract Factory Pattern adds an abstraction layer over
-# multiple other creational pattern implementations.
+"""
+Description:
+------------
+The Abstract Factory Pattern provides an interface for creating families
+of related or dependent objects without specifying their concrete classes.
+It's a higher-level design pattern that adds an abstraction layer over other
+creational patterns like the Factory Method Pattern.
 
-# Useful when:
-# ------------
-# - there is need to provide a library of relatively
-#   similar products from multiple different factories.
-# - the system needs to be independent of how the products
-#   are created.
-# - intention to enforce consistent interfaces across products.
-# - there is the possibility to exchange product families.
-#
-# Key features:
-# ------------
-# - fulfills all of the same use cases as the Factory method,
-#   but is a factory for creational pattern type methods.
-# - The client implements the abstract factory interface,
-#   rather than all the internal logic and Factories. This
-#   allows the possibility of creating a library that can be
-#   imported for using the Abstract Factory.
-# - The Abstract Factory defers the creation of the final
-#   products/objects to its concrete factory subclasses.
+Key features:
+-------------
+Same Use Cases as Factory Method:
+    The Abstract Factory Pattern can be used in similar scenarios as
+    the Factory Method, but it provides a factory for creational pattern
+    methods rather than directly creating products.
+
+Client-Side Abstraction:
+   The client interacts with the abstract factory interface rather than
+   handling internal logic and factory implementations, allowing easier
+   integration and extension.
+
+Defers Final Product Creation:
+    The actual creation of products is deferred to concrete
+    factory subclasses that implement the abstract factory.
+
+Usage:
+------
+Multiple Similar Products:
+    When you need to provide a library of similar
+    products that come from different factories.
+
+Decoupling Product Creation
+    When the system needs to be independent
+    of how the products are created.
+
+Consistent Interfaces:
+    When you want to enforce consistent
+    interfaces across different products.
+
+Exchanging Product Families:
+    When there is a need to switch
+    between different families of products.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner, TestSuite

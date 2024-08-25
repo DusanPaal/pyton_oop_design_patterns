@@ -1,32 +1,71 @@
-# Description.
-# ------------
-# The Facade pattern is a structural pattern that provides
-# a simplified interface to a complex system, consisting of
-# one or more subsystems. It is a higher-level interface that
-# makes the subsystem easier to use.
-#
-# Useful when:
-# ------------
-# - the system id complex has many components and interactions and is difficult to understand or change,
-#   and you want to layer your subsystems into an abstraction that is easier to understand.
-#
-# Key features:
-# ------------
-# - provides a simple interface to a complex system
-# - hides the complexity of the system from the client
-# - decouples the client from the system
-# - can provide a default configuration or behavior
-# - can provide a single point of access to a subsystem
-# - abstract Factory and Facade can be considered very similar. An Abstract Factory is about
-#   creating in interface over several creational classes of similar objects, whereas the Facade is
-#   more like an API layer over many creational, structural and/or behavioral patterns.
-# - The Mediator is similar to the Facade in the way that it abstracts existing classes.
-# - The Facade is not intended to modify, load balance or apply any extra logic. A subsystem does not need to
-#   consider that existence of the facade, it would still work without it.
-# - A Facade is a minimal interface that could also be implemented as a Singleton.
-# - a Facade is an optional layer that does not alter the subsystem. The subsystem does not need
-#   to know about the Facade, and could even be used by many other facades created for different
-#   audiences.
+"""
+Description:
+------------
+The Facade Pattern is a structural design pattern that provides a simplified,
+unified interface to a complex system consisting of multiple subsystems.
+This pattern creates a higher-level interface that makes the system easier
+to use and understand.
+
+Key features:
+-------------
+Simplified Interface:
+    The Facade pattern provides a simple and easy-to-use interface
+    that masks the underlying complexity of the system.
+
+Hides Complexity:
+    It hides the intricate workings of the subsystems from the client,
+   making interactions with the system more straightforward.
+
+Decoupling:
+    The pattern decouples the client from the subsystem, allowing
+    the client to interact with the system through the facade without
+    needing to understand the underlying complexity.
+
+Default Configuration:
+    A Facade can offer a default configuration or behavior, simplifying
+   common use cases.
+
+Single Point of Access:
+    It can provide a single entry point for accessing the subsystem,
+    streamlining interactions.
+
+Comparison with Abstract Factory:
+    While an Abstract Factory provides an interface for creating families
+    of related or dependent objects, a Facade is more like an API layer that
+    can encompass creational, structural, and behavioral patterns.
+
+Comparison with Mediator:
+    The Facade is similar to the Mediator in that both abstract existing classes.
+    However, while the Mediator centralizes communication between objects, the
+    Facade simplifies the interface to a complex system.
+
+Non-Intrusive:
+    The Facade does not modify or interfere with the subsystems. The subsystems
+    operate independently of the Facade, meaning they do not need to be aware of
+    its existence.
+
+Minimal Interface:
+    A Facade typically represents a minimal interface, which could also
+    be implemented as a Singleton to ensure a single point of access.
+
+Optional Layer:
+    The Facade is an optional layer that clients can use. The underlying
+    subsystems do not need to be aware of the Facade, and the system can
+    still function without it. Multiple Facades can be created for different
+    audiences or purposes.
+
+Usage:
+------
+Complex Systems:
+    When dealing with a system that has many interacting components
+    and is difficult to manage, the Facade pattern helps by offering
+    a simpler, easier-to-use interface.
+
+Layered Abstraction:
+    When you want to layer your subsystems into an abstraction that
+    hides the complexity and presents a more user-friendly interface.
+
+"""
 
 from unittest import TestCase, TextTestRunner
 
@@ -51,8 +90,10 @@ class SubSystemClassB:
         "A hypothetically complicated method"
         return value
 
+
 class SubSystemClassC:
     """A hypothetically complicated class"""
+
 
     @staticmethod
     def method(value):
@@ -87,8 +128,6 @@ class Facade:
     def sub_system_class_c(value):
         "Use the subsystems method"
         return SubSystemClassC().method(value)
-
-
 
 
 # ==========================================

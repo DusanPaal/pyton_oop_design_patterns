@@ -1,32 +1,50 @@
+"""
+Description:
+------------
+The Factory Pattern is a creational design pattern that provides
+an interface for creating objects, allowing subclasses to alter
+the type of objects that will be created. This pattern adds an
+extra level of abstraction by delegating the instantiation process
+to subclasses, which means the client does not need to know the
+specifics of how the objects are created.
+
+Key features:
+-------------
+Deferred Object Creation:
+    The creation of the final object is deferred to a subclass, meaning
+    the specific class that creates the object is determined at runtime.
+
+Added Abstraction Layer:
+    By inserting another layer between the object instantiation and its usage
+    in the code, the pattern allows for more flexible and maintainable code.
+
+Runtime Flexibility:
+    The Factory Pattern is useful when it is unknown what specific objects
+    will need to be created until runtime, allowing the system to dynamically
+    decide which class to instantiate.
+
+Usage:
+------
+Library of Similar Products:
+    When you need to create a group of similar products from a single factory.
+
+Decoupling Object Creation:
+    When the system needs to be independent of the object creation process,
+    ensuring that the specifics of how objects are created are hidden from
+    the client.
+
+Consistent Interfaces:
+    When there’s a need to enforce consistent interfaces across
+    different products, ensuring they adhere to a particular standard.
+
+Localized Knowledge of Instantiation:
+    When you want to centralize the knowledge of how objects are instantiated
+    within a subclass, so the client code is not concerned with these details.
+
+"""
+
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner
-
-# Description:
-# ------------
-# The module provides an implementation of the factory pattern
-# to create related or dependent objects. The Factory design
-# pattern adds an extra level of abstraction to creating specific objects
-# while hiding the instantioation details from the class or method
-# that is using it. Thus, the factory pattern represents an interface
-# that defers the creation of the final object to a subclass.
-
-# Useful when:
-# ------------
-# - there is need to provide a library of relatively
-#   similar products from a single factory.
-# - the system needs to be independent of how the products
-#   are created.
-# - intention to enforce consistent interfaces across products.
-# - You want to localize knowledge of the specifics of instantiating a particular object to the
-# subclass so that the client doesn't need to be concerned about the details.
-#
-# Key features:
-# ------------
-# - defers the creation of the final object to a subclass
-# - inserts another layer/abstraction between instantiating an object
-#   and where in the code it is actually used.
-# - It is unknown what or how many objects will need to be created until runtime.
-
 
 # ==========================================
 #               product classes

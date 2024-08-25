@@ -1,24 +1,52 @@
-# Description.
-# ------------
-# The Flyweight pattern describes how to share objects rather than
-# creating thousands of almost repeated objects unnecessarily.
-#
-# Useful when:
-# ------------
-# - saving memory is a priority
-#y
-# Key features:
-# ------------
-# - Intrinsic values are stored internally in the Flyweight
-# - Extrinsic values are passed to the Flyweight and customise it depending on the context
-# - Implementing the flyweight is a balance between storing all objects in memory, versus
-#   storing small unique parts in memory, and potentially calculating extrinsic values in
-#   the context objects
-# - The flyweight reduces memory footprint because it shares objects and allows the possibility
-#   of dynamically creating extrinsic attributes
-# - The offset is that extra CPU may be required during calculating and passing extrinsic values
-#   to the flyweights.
+"""
+Description:
+------------
+The Flyweight Pattern is a structural design pattern that focuses on minimizing
+memory usage by sharing objects instead of creating multiple instances of objects
+that are almost identical. It is especially useful in situations where a large
+number of similar objects are needed.
 
+Key features:
+------------
+1. Intrinsic vs. Extrinsic Values:
+
+    1.1 Intrinsic Values:
+        These are the invariant (unchanging) parts of the object
+        that are shared among all instances. They are stored
+        internally within the Flyweight.
+
+    1.2 Extrinsic Values:
+        These are the varying parts of the object that can be
+        passed in from outside to customize the Flyweight based
+        on the context. They are not stored within the Flyweight
+        but provided by the client when needed.
+
+2. Memory Footprint Reduction:
+    By sharing common parts of objects (intrinsic values) and only
+    varying what’s necessary (extrinsic values), the Flyweight Pattern
+    significantly reduces the memory footprint.
+
+3. Trade-offs:
+
+    3.1 Memory vs. CPU Usage:
+        Implementing the Flyweight Pattern involves a trade-off
+        between saving memory and potentially increasing CPU usage.
+        The pattern reduces memory consumption but may require
+        additional computation to manage extrinsic values.
+
+    3.1 Balancing Storage:
+        It requires careful balancing between what is stored internally
+        (intrinsic) and what is passed or computed externally (extrinsic).
+        The goal is to store only the unique, essential parts of objects
+        in memory and dynamically calculate or pass other parts as needed.
+
+Usage:
+------
+Memory Optimization:
+    The Flyweight Pattern is ideal when memory usage is a priority, and you need
+    to reduce the number of objects created in a system by sharing common parts
+    of object state.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner

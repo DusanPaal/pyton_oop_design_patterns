@@ -1,36 +1,52 @@
-# Description:
-# ------------
-# The Prototype design pattern is suitable for situations when
-# creating new objects requires more resources than available.
-# The resources can be saved by just creating a copy (deep or shallow)
-# of any existing object that is already in memory. In the Prototype
-# pattern interface, a static clone() method is created that should
-# be implemented by all classes that use the interface.
+"""
+Description:
+------------
+The Prototype Pattern is a creational design pattern that is used
+to create new objects by copying existing objects, rather than
+creating new instances through traditional instantiation.
+This pattern is particularly useful when object creation is
+resource-intensive or when objects need to be dynamically created
+at runtime without knowing their exact configurations in advance.
 
-# Useful when:
-# ------------
-# A prototype is also useful for when you want to create a copy of
-# an object, but creating that copy may be very resource intensive.
-#
-# Key features:
-# ------------
+Key features:
+-------------
+Clone Method:
+    The pattern typically involves a clone() method that is implemented by classes
+    using the Prototype pattern. This method is responsible for copying the object,
+    and it can be a shallow or deep copy depending on the implementation.
 
+Runtime Object Creation:
+    Just like other creational patterns, the Prototype Pattern facilitates
+    the creation of objects at runtime. However, it does so by using an already
+    instantiated object as a template.
 
+Avoids Class Proliferation:
+    The Prototype Pattern reduces the need for a large number of classes.
+    Instead of creating new classes for every possible object configuration,
+    you can create a prototype object and clone it as needed.
 
+Flexible Cloning:
+    When designing the clone() method, careful consideration is needed for
+    how deep the copying should be. You can choose between shallow copying,
+    deep copying, or a combination depending on the object's attributes and
+    the desired behavior.
 
-# Just like the other creational patterns, a Prototype is used to create an object at runtime.
-# A Prototype is created from an object that is already instantiated. Imagine using the existing
-# object as the class template to create a new object, rather than calling a specific class.
-# The ability to create a Prototype means that you don't need to create many classes for specific
-# combinations of objects. You can create one object, that has a specific configuration, and then
-# clone this version many times, rather than creating a new object from a predefined class
-# definition.
-# New Prototypes can be created at runtime, without knowing what kind of attributes the
-# prototype may eventually have. E.g., You have a sophisticated object that was randomly
-# created from many factors, and you want to clone it rather than re applying all the same
-# functions over and over again until the new object matches the original.
-# - when designing your clone() method, you should consider which elements will be
-# shallow copied, how deep, and whether or not full recursive deep copy is necessary.
+Usage:
+------
+Resource-Intensive Object Creation:
+    When creating a new object is resource-intensive
+    (e.g., requires significant computational resources or time),
+    and it is more efficient to copy an existing object.
+
+Dynamic Object Creation:
+    When objects need to be created dynamically at runtime without
+   knowing their exact attributes beforehand.
+
+Reusing Configurations:
+    When you have an object with a specific configuration
+    that you want to reuse multiple times without recreating it from scratch.
+
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner, TestSuite
@@ -40,7 +56,7 @@ import copy
 # ==========================================
 #            prototype classes
 # ==========================================
-class IPrototype:
+class IPrototype(metaclass=ABCMeta):
     """The Prototype interface"""
 
     @staticmethod

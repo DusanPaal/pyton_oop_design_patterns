@@ -1,45 +1,68 @@
-# DEscription:
-# ------------
-#
-#
-# Useful when:
-# ------------
-# - there is an existing interface that doesn't directly map to anoter interface that the client requires
-# . So, then you create the Adapter that has a similar functional role, but with a
-# new compatible interface
-#
-# Key features:
-# ------------
-# - It is an alternative interface over an existing interface. It can also provide extra functionality that the
-# interface being adapted may not already provide.
-# - The adapter is similar to the "Facade", but you are modifying the method signature, combining other
-# methods and/or transforming data that is exchanged between the existing interface and the client.
+"""
+Description:
+------------
+The Adapter Pattern is used to make an interface compatible
+with another interface that a client expects. It involves
+creating an adapter class that translates the interface of
+a class into an interface that the client can work with.
+This pattern allows for the integration of existing code
+with new code without altering the existing codebase.
 
-# - similar to the Decorator in the way that it also acts like a wrapper to an object.
-# It is also used at runtime; however, it is not designed to be used recursively.
+Key Features:
+-------------
+Incompatible Interfaces:
+    When you have an existing class or interface that does
+    not match the interface required by the client or system.
+   The Adapter Pattern allows you to create a new interface
+   that is compatible with the client’s expectations.
 
+Legacy Code Integration:
+    When integrating with legacy systems or third-party libraries
+   where modifying the original interface is not possible or practical.
 
+Providing Additional Functionality:
+    When you want to adapt an existing interface to meet new requirements,
+    potentially adding additional functionality in the process.
 
-# Use the Adapter when you want to use an existing class, but its interface does not match what
-# you need.
-# The adapter adapts to the interface of its parent class for those situations when it is not viable
-# to modify the parent class to be domain-specific for your use case.
-# Adapters will most likely provide an alternative interface over an existing object, class or
-# interface, but it can also provide extra functionality that the object being adapted may not
-# already provide.
-# An adapter is similar to a Decorator except that it changes the interface to the object, whereas
-# the decorator adds responsibility without changing the interface. This also allows the
-# Decorator to be used recursively.
-# An adapter is similar to the Bridge pattern and may look identical after the refactoring has been
-# completed. However, the intent of creating the Adapter is different. The Bridge is a result of
-# refactoring existing interfaces, whereas the Adapter is about adapting over existing interfaces
-# that are not viable to modify due to many existing constraints. E.g., you don't have access to
-# the original code or it may have dependencies that already use it and modifying it would affect
-# those dependencies negatively.
+Distinction from Other Patterns:
+--------------------------------
+Facade:
+    While both patterns provide a simpler interface, the Adapter Pattern
+    specifically focuses on making incompatible interfaces work together,
+    whereas the Facade Pattern provides a unified interface over a set of
+    interfaces.
+
+Decorator:
+    The Adapter changes the interface of an object to match the client's
+    expectations, whereas the Decorator adds additional behavior to an object
+    without modifying its interface.
+
+Bridge:
+    The Adapter Pattern adapts existing interfaces to meet new requirements,
+    while the Bridge Pattern is used to decouple an abstraction from its
+    implementation, making it easier to vary or extend both independently.
+
+Usage:
+------
+Alternative Interface:
+    The Adapter Pattern provides an alternative interface to an existing
+    interface, allowing it to work with code that expects a different interface.
+    This can involve modifying method signatures, combining methods, or transforming
+    data.
+
+Wrapper Concept:
+    Similar to the Decorator Pattern, the Adapter Pattern wraps an object to
+    provide a new interface. However, unlike the Decorator, which adds
+    responsibilities or features without changing the existing interface,
+    the Adapter changes the interface to make it compatible.
+
+Runtime Adaptation:
+    Adapters are used at runtime to adapt objects to the expected interface,
+    but they are not designed for recursive use.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner
-
 
 
 # ==========================================

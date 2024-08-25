@@ -1,20 +1,47 @@
-# Description.
-# ------------
-# The Composite design pattern is a structural pattern useful for hierarchal management.
-# It allows you to compose objects into tree structures to represent part-whole hierarchies.
-# The pattern lets clients treat individual objects and compositions of objects uniformly.
+"""
+Description:
+------------
+The Composite Pattern is a structural design pattern that allows you to compose
+objects into tree-like structures to represent part-whole hierarchies. This
+pattern enables clients to treat individual objects and compositions of objects
+in a uniform manner.
 
-# Useful when:
-# ------------
-# - You want to represent part-whole hierarchies of objects (e.g. file systems)
-# - Any system where you need to offer at runtime the ability to group, un-group, modify multiple
-# objects at the same time, would benefit from the composite design pattern structure. Programs
-# that allow you to draw shapes and graphics will often also use this structure as well
-# - File explorer on windows is a very good example of the composite design pattern in use
-#
-# Key features:
-# ------------
-# - It provides flexibility of structure since you can add/remove and reorder components
+Key features:
+-------------
+Uniform Treatment:
+    The pattern allows clients to treat individual objects and compositions
+    (groups of objects) in the same way. This simplifies code that interacts
+    with these objects, as it doesn't need to differentiate between single
+    and composite objects.
+
+Flexible Structure:
+    The Composite Pattern provides flexibility in managing the structure,
+    as components can be added, removed, or reordered dynamically. This is
+    useful in systems where the composition of objects may change over time.
+
+Recursive Composition:
+    Objects in the composite structure can themselves be composites, allowing
+    for complex hierarchies. For instance, a folder can contain both files and
+    other folders, which can themselves contain files and folders.
+
+Usage:
+------
+Part-Whole Hierarchies:
+    When you need to represent a hierarchy of objects where individual objects
+    and compositions of objects should be treated uniformly.
+
+Grouping and Management:
+    When your system requires the ability to group, ungroup, or modify multiple
+    objects simultaneously at runtime, the Composite Pattern is beneficial.
+    This is common in applications like graphic editors or file systems.
+
+File Systems:
+    A classic example is a file system where files and folders (directories)
+    are organized in a hierarchical structure. The Composite Pattern allows
+    treating files and folders uniformly when performing operations like opening,
+    closing, or displaying their contents.
+
+"""
 
 from abc import ABCMeta, abstractmethod
 
@@ -38,6 +65,7 @@ class IComponent(metaclass=ABCMeta):
         """Called before a leaf
         is attached to a composite"""
 
+
 class Leaf(IComponent):
     """A Leaf can be added to
     a composite, but not a leaf"""
@@ -47,23 +75,23 @@ class Leaf(IComponent):
     @staticmethod
     @abstractmethod
     def method(self):
+        """The method handle"""
 
         parent_id = None
 
         if self.reference_to_parent:
             parent_id = id(self.reference_to_parent)
 
-        print(
-            f"<Leaf>\t\tid:{id(self)}\tParent:\t{parent_id}"
-        )
+        print(f"<Leaf>\t\tid:{id(self)}\tParent:\t{parent_id}")
 
     @staticmethod
     @abstractmethod
     def detach(self):
-        "Detaching this leaf from its parent composite"
+        """Detaching this leaf from its parent composite"""
 
         if self.reference_to_parent is not None:
             self.reference_to_parent.delete(self)
+
 
 class Composite(IComponent):
     """A composite can contain leaves and compositess"""
@@ -88,7 +116,7 @@ class Composite(IComponent):
             component.method()
 
     def reference_to_parent(*args):
-        """The method handle""")
+        """The method handle"""
 
     def attach(self, component):
         """Detach leaf/composite from any current parent reference and

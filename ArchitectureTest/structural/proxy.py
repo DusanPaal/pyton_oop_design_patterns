@@ -1,31 +1,88 @@
-# Description:
-# ------------
-# The Proxy design pattern provides an interface to another class or object.
-#
-# Types of Proxies:
-# -----------------
-# -> Virtual Proxy: Caches parts of the real object and completes loading as needed.
-# -> Remote Proxy: Relays messages to a real object in a different address space.
-# -> Protection Proxy: Adds an authentication layer before accessing the real object.
-# -> Smart Reference: Allows internal attributes of an object to be overridden or replaced.
-#
-# Key Features:
-# -------------
-# - Enables additional functionality at the proxy level, such as caching, authorization,
-#   validation, lazy initialization, or logging.
-# - The proxy should closely match the subject interface to appear identical to the client.
-# - Proxy patterns can be referred to as Monkey Patching or Object Augmentation.
-# - Forwards requests to the Real Subject based on the proxy type.
-# - A protection proxy, like an NGINX proxy, can enforce authentication (e.g., Basic Authentication).
-# - Proxies can handle multiple tasks as needed.
-# - Unlike an Adapter, which adapts two interfaces, a Proxy uses the same interface as the subject.
-# - Similar to a Facade, but with the ability to add responsibilities like a Decorator, which can
-#   be used recursively.
-# - The Proxy provides a stand-in when direct access to the real subject is inconvenient.
-# - The Proxy pattern is also known as the Surrogate design pattern.
+"""
+Description:
+------------
+The Proxy Pattern is a structural design pattern that provides an interface to
+another class or object, acting as a stand-in or surrogate. The proxy controls
+access to the real subject, allowing for additional functionality such as caching,
+authentication, or lazy initialization.
+
+Types of Proxies:
+
+1. Virtual Proxy:
+    Delays the creation or loading of an expensive object until it is needed.
+    It can also cache parts of the real object, completing the loading as required.
+
+2. Remote Proxy:
+    Manages communication between a client and a remote object in a different
+    address space, often in a different machine or server.
+
+3. Protection Proxy:
+    Controls access to the real object by adding an authentication or
+    authorization layer before granting access.
+
+4. Smart Reference:
+    Provides additional functionality when accessing an object, such as counting
+    the number of references, loading, or handling additional responsibilities.
+
+Key Features:
+-------------
+Enhanced Functionality:
+    Proxies can add functionalities like caching, validation, logging, lazy
+    initialization, or access control before forwarding requests to the real
+    object.
+
+Interface Matching:
+    The proxy should closely match the subject's interface so that it appears
+    identical to the client, making the substitution seamless.
+
+Versatility:
+    Proxies can handle a variety of tasks, depending on the type of proxy used,
+    making them versatile in different scenarios.
+
+Monkey Patching/Object Augmentation:
+    The proxy pattern can be seen as a form of monkey patching or object
+    augmentation, where the behavior of an object is modified or extended
+    at runtime.
+
+Request Forwarding:
+    The proxy forwards requests to the real subject based on its type, managing
+    how and when the real subject is accessed.
+
+Authentication and Access Control:
+    A protection proxy, similar to an NGINX proxy, can enforce authentication
+    mechanisms, such as Basic Authentication, to control access.
+
+Proxy vs. Adapter vs. Decorator:
+    Unlike an Adapter, which adapts two incompatible interfaces, a Proxy uses
+    the same interface as the subject. Similar to a Facade, but with the ability
+    to add responsibilities like a Decorator, which can be used recursively.
+
+Convenient Stand-in:
+    The Proxy provides a stand-in when direct access to the real subject is
+    inconvenient, costly, or requires additional control.
+
+Surrogate Pattern:
+    The Proxy pattern is also known as the Surrogate design pattern, emphasizing
+    its role as a substitute for another object.
+
+Usage:
+------
+- You need to control access to an object, adding an extra layer of functionality
+    such as caching, logging, or access control.
+
+- The object is resource-intensive to create or requires expensive operations,
+    and you want to delay its creation until absolutely necessary.
+
+- The object is in a different address space, such as on a remote server, and
+    you need to manage communication between the client and the remote object.
+
+- You want to add a security layer that ensures only authorized clients can
+    access the real object.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner
+
 
 class ISubject(metaclass=ABCMeta):
     """An interface implemented by both the Proxy and Real Subject"""

@@ -1,26 +1,61 @@
-# Description.
-# ------------
-# The Bridge pattern is a structural pattern that decouples an abstraction from its
-# implementation so that the two can vary independently.
-#
-# Useful when:
-# ------------
-# - the code of a system is tightly coupled with the logic and abstraction too close together,
-#   that is limiting the choices in how the solution can be extended in the required direction.
-# - Use when you want to separate a solution where the abstraction and implementation may be
-#   tightly coupled and you want to break it up into smaller conceptual parts; Once you have
-#   added the bridge abstraction, you should be able to extend each side of it
-#   separately without breaking the other
-#
-# Key features:
-# ------------
-# - decouples the abstraction from the implementation
-# - similar to the Adapter pattern except in the intent that you developed it.
-# - The Bridge is an approach to refactor already existing code, whereas the Adapter creates an
-#   interface on top of existing code through existing available means without refactoring any
-#   existing code or interfaces.
-# - the application of a Bridge in your code should use composition instead of inheritance,
-#   the relationship is assigned at runtime, rather than hard coded in the class definition
+"""
+Description.
+------------
+The Bridge Pattern is designed to decouple an abstraction from its implementation,
+allowing you to change or extend both independently without affecting each other.
+This pattern is particularly useful when a system's code is tightly coupled with
+its logic and abstraction, restricting the ability to extend or modify either
+side without significant changes.
+
+Key features:
+-------------
+Decoupling:
+    The Bridge Pattern separates the abstraction (the high-level interface)
+    from the implementation (the low-level operations), allowing both to be
+    developed and modified independently.
+
+Composition Over Inheritance:
+    Unlike the Adapter Pattern, which is more about creating a new interface
+    on top of existing code, the Bridge Pattern uses composition to establish
+    a dynamic relationship between the abstraction and the implementation.
+    This is done at runtime rather than being hard-coded in the class definitions.
+
+Refactoring Existing Code:
+    The Bridge Pattern is often applied to refactor existing codebases where
+    abstraction and implementation are tightly integrated. It creates a more
+    flexible design that allows both sides to be extended or modified independently.
+
+Comparison with Other Patterns:
+-------------------------------
+Adapter Pattern:
+    While both patterns involve interfaces and aim to bridge gaps, the Adapter
+    focuses on adapting an existing interface to meet new requirements, often
+    without changing existing code. In contrast, the Bridge Pattern is used to
+    separate abstraction from implementation and is more about refactoring
+    existing code to make it more flexible.
+
+Decorator Pattern:
+    The Decorator adds responsibilities to an object without altering its interface,
+    whereas the Bridge Pattern separates the abstraction from its implementation,
+    focusing on decoupling and independent extensibility.
+
+Facade Pattern:
+    The Facade Pattern provides a simplified interface to a complex subsystem,
+    whereas the Bridge Pattern aims at decoupling abstraction and implementation
+    to allow them to evolve separately.
+
+Usage:
+------
+Tight Coupling Issues:
+    When your system's abstraction and implementation are tightly
+    coupled, making it difficult to extend or modify one without
+    affecting the other. The Bridge Pattern helps separate these concerns.
+
+Extending Abstraction and Implementation Independently:
+    When you want to break down a solution into smaller, independent
+    conceptual parts, allowing each to evolve or be extended separately
+    without impacting the other.
+"""
 
 from abc import ABCMeta, abstractmethod
 from unittest import TestCase, TextTestRunner

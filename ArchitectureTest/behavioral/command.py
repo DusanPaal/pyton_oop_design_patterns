@@ -1,31 +1,34 @@
 """
 Description:
 ------------
-The Command pattern is a behavioral design pattern that separates
-the object invoking a command from the object performing it.
-For example, a button (Invoker) triggers a command that is executed
-by a Receiver, which then calls a pre-registered Command object.
+The Command pattern is a behavioral design pattern that decouples the object
+that invokes a command (Invoker) from the object that performs it (Receiver).
+For instance, a button (Invoker) triggers an action executed by a Receiver
+through a pre-registered Command object.
 
-Benefits:
----------
-This pattern allows for separation of concerns, enabling independent
-problem-solving, such as logging command execution and outcomes.
-
-Useful When:
-------------
-- Implementing UNDO/REDO functionality.
-- Handling GUI Buttons, menus, macro recording, multi-level undo/redo,
-networking (e.g., sending command objects across a network), batch
-processing, parallel processing, thread pools, transactional behavior,
-and wizards.
+This pattern promotes modularity by separating the responsibilities of invoking
+and executing commands, allowing for features like logging command execution and
+outcomes.
 
 Key Features:
-------------
-The Command object should not manage state.
-One or more Invokers can execute the Command later.
-Similar to the Memento pattern for UNDO/REDO purposes, but while Memento
-records and restores object states, the Command pattern executes predefined
-commands like Draw, Turn, Resize, or Save.
+-------------
+Stateless Command Objects:
+    The Command object does not manage state, making it
+    easier to reuse and invoke later by one or more Invokers.
+
+Comparison to Memento Pattern:
+    While similar to the Memento pattern in supporting UNDO/REDO operations,
+    the Command pattern focuses on executing predefined actions (e.g., Draw,
+    Turn, Resize, Save) rather than recording and restoring object states.
+
+Usage:
+------
+- Implementing UNDO/REDO functionality.
+
+- Managing GUI buttons, menus, macro recording, multi-level undo/redo operations,
+  networking (e.g., sending command objects across a network), batch processing,
+  parallel processing, thread pools, transactional behavior, and wizards.
+
 """
 
 from abc import ABCMeta, abstractmethod
